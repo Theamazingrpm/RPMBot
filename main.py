@@ -156,4 +156,4 @@ graceperiods = {
     929790100928340048 : 0
 }
 
-client.run("OTcwMTMwMjA5Njg2ODE4ODg3.Ym3eKg.JMZpYHUQfCNz_zJNSucOM7tDFZw")
+client.run("PLACE_TOKEN_HERE")
