@@ -46,7 +46,7 @@ async def on_voice_state_update(member, before, after):
             await channel.send(file=discord.File("Gifs/King Helgi.gif"))
 
     elif not before.channel and after.channel and member.id == 279776159120621568:
-        channel = client.get_channel(279776159120621568)
+        channel = client.get_channel(834913896237236244)
         if time() - graceperiods[279776159120621568] > 7200:
             graceperiods[279776159120621568] = time()
             await channel.send("Look out!! It's Friction!")
