@@ -46,7 +46,7 @@ async def on_voice_state_update(member, before, after):
             await channel.send(file=discord.File("Gifs/King Helgi.gif"))
 
     elif not before.channel and after.channel and member.id == 279776159120621568:
-        channel = client.get_channel(834913896237236244)
+        channel = client.get_channel(x)
         if time() - graceperiods[279776159120621568] > 7200:
             graceperiods[279776159120621568] = time()
             await channel.send("Look out!! It's Friction!")
@@ -57,7 +57,7 @@ async def on_voice_state_update(member, before, after):
         if time() - graceperiods[969608624307601438] > 7200:
             graceperiods[969608624307601438] = time()
             await channel.send("Is that YoungK in VC?!?")
-            await channel.sen(file=discord.File("Gifs/YoungK.gif"))
+            await channel.send(file=discord.File("Gifs/YoungK.gif"))
 
     elif not before.channel and after.channel and member.id == 629746673605804043:
         channel = client.get_channel(834913896237236244)
@@ -138,9 +138,15 @@ async def on_voice_state_update(member, before, after):
             await channel.send(file=discord.File("Everyone grab your Bible! NeilSpirits is in VC."))
             await channel.send(file=discord.File("Gifs/NeilSpirits.gif"))
 
+    elif not before.channel and after.channel and member.id == 873204571298742323:
+        channel = client.get_channel(834913896237236244)
+        if time() - graceperiods[873204571298742323] > 7200:
+            graceperiods[873204571298742323] = time()
+            await channel.send ("Who let the Frog out of its cage? Oh, nevermind, it's Ribbit!")
+            await channel.send(file=discord.File("Gifs/Ribbit.gif"))
 graceperiods = {
     591388257992835093 : 0,
-    684462242082717787 : 0,
+    243879095711170572 : 0,
     598168727363780609 : 0,
     279776159120621568 : 0,
     969608624307601438 : 0,
@@ -153,7 +159,9 @@ graceperiods = {
     309654076885303307 : 0,
     671382987459526668 : 0,
     770390699131797565 : 0,
-    929790100928340048 : 0
+    672142596209901580 : 0,
+    929790100928340048 : 0,
+    873204571298742323 : 0
 }
 
-client.run("PLACE_TOKEN_HERE")
+client.run("OTcwMTMwMjA5Njg2ODE4ODg3.GPef58.IWDnJ4C2hn-lBekfN_k1WsocVyITXm5Kk0WMJg")
