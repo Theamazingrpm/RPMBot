@@ -27,6 +27,8 @@ async def on_voice_state_update(member, before, after):
         channel = client.get_channel(834913896237236244)
         if time() - graceperiods[591388257992835093] > 7200:
             graceperiods[591388257992835093] = time()
+            # now that we've updated the graceperiods dictionary in memory
+            # we'll also want to update the file on disk here
             await channel.send('Look out! Here comes the Amazing RPM...Man!')
             await channel.send(file=discord.File("Gifs/Spider-Man Theamazingrpm Gif.gif"))
         
@@ -34,6 +36,8 @@ async def on_voice_state_update(member, before, after):
         channel = client.get_channel(834913896237236244)
         if time() - graceperiods[243879095711170572] > 7200:
             graceperiods[243879095711170572] = time()
+            # now that we've updated the graceperiods dictionary in memory
+            # we'll also want to update the file on disk here
             await channel.send("Viktir is in VC! What else is new?")
             await channel.send(file=discord.File("Gifs/Viktir.gif"))
 
@@ -41,6 +45,8 @@ async def on_voice_state_update(member, before, after):
         channel = client.get_channel(834913896237236244)
         if time() - graceperiods[598168727363780609] > 7200:
             graceperiods[598168727363780609] = time()
+            # now that we've updated the graceperiods dictionary in memory
+            # we'll also want to update the file on disk here
             await channel.send("Everyone act busy! King Helgi approaches!")
             await channel.send(file=discord.File("Gifs/King Helgi.gif"))
 
@@ -48,6 +54,8 @@ async def on_voice_state_update(member, before, after):
         channel = client.get_channel()
         if time() - graceperiods[279776159120621568] > 7200:
             graceperiods[279776159120621568] = time()
+            # now that we've updated the graceperiods dictionary in memory
+            # we'll also want to update the file on disk here
             await channel.send("Look out!! It's Friction!")
             await channel.send(file=discord.File("Gifs/Friction.gif"))
 
@@ -55,6 +63,8 @@ async def on_voice_state_update(member, before, after):
         channel = client.get_channel(834913896237236244)
         if time() - graceperiods[969608624307601438] > 7200:
             graceperiods[969608624307601438] = time()
+            # now that we've updated the graceperiods dictionary in memory
+            # we'll also want to update the file on disk here
             await channel.send("Is that YoungK in VC?!?")
             await channel.send(file=discord.File("Gifs/YoungK.gif"))
 
@@ -62,6 +72,8 @@ async def on_voice_state_update(member, before, after):
         channel = client.get_channel(834913896237236244)
         if time() - graceperiods[629746673605804043] > 7200:
             graceperiods[629746673605804043] = time()
+            # now that we've updated the graceperiods dictionary in memory
+            # we'll also want to update the file on disk here
             await channel.send(
             "Hey Look! It's Jillybillysillydillywillychilli! Just be grateful she doesn't give her last name!"
         )
@@ -71,6 +83,8 @@ async def on_voice_state_update(member, before, after):
         channel = client.get_channel(834913896237236244)
         if time() - graceperiods[180950627310895104] > 7200:
             graceperiods[180950627310895104] = time()
+            # now that we've updated the graceperiods dictionary in memory
+            # we'll also want to update the file on disk here
             await channel.send("creativeSavagery Enters!")
             await channel.send(file=discord.File("Gifs/CreativeSavagery.gif"))
 
@@ -78,6 +92,8 @@ async def on_voice_state_update(member, before, after):
         channel = client.get_channel(834913896237236244)
         if time() - graceperiods[669370838478225448] > 7200:
             graceperiods[669370838478225448] = time()
+            # now that we've updated the graceperiods dictionary in memory
+            # we'll also want to update the file on disk here
             await channel.send("Oh no! Look who the circus just dragged back in...The Giggler!?!")
             await channel.send(file=discord.File("Gifs/TheGiggler.gif"))
 
@@ -85,6 +101,8 @@ async def on_voice_state_update(member, before, after):
         channel = client.get_channel(834913896237236244)
         if time() - graceperiods[684462242082717787] > 7200:
             graceperiods[684462242082717787] = time()
+            # now that we've updated the graceperiods dictionary in memory
+            # we'll also want to update the file on disk here
             await channel.send("Taco is here!!")
             await channel.send(file=discord.File("Gifs/TacoKat.gif"))
 
@@ -92,6 +110,8 @@ async def on_voice_state_update(member, before, after):
         channel = client.get_channel(834913896237236244)
         if time() - graceperiods[149151239597195264] > 7200:
             graceperiods[149151239597195264] = time()
+            # now that we've updated the graceperiods dictionary in memory
+            # we'll also want to update the file on disk here
             await channel.send("Seal's here!")
             await channel.send(file=discord.File("Gifs/Seal.gif"))
 
@@ -99,6 +119,8 @@ async def on_voice_state_update(member, before, after):
         channel = client.get_channel(834913896237236244)
         if time() - graceperiods[802677718515843072] > 7200:
             graceperiods[802677718515843072] = time()
+            # now that we've updated the graceperiods dictionary in memory
+            # we'll also want to update the file on disk here
             await channel.send("Hippity hop! Bunny is here!")
             await channel.send(file=discord.File("Gifs/Bunny.gif"))
 
@@ -106,6 +128,8 @@ async def on_voice_state_update(member, before, after):
         channel = client.get_channel(834913896237236244)
         if time() - graceperiods[309654076885303307] > 7200:
             graceperiods[309654076885303307] = time()
+            # now that we've updated the graceperiods dictionary in memory
+            # we'll also want to update the file on disk here
         await channel.send("Grey Goat straggled in! Someone grab him!")
         await channel.send(file=discord.File("Gifs/GreyGoat.gif"))
 
@@ -113,6 +137,8 @@ async def on_voice_state_update(member, before, after):
         channel = client.get_channel(834913896237236244)
         if time() - graceperiods[671382987459526668] > 7200:
             graceperiods[671382987459526668] = time()
+            # now that we've updated the graceperiods dictionary in memory
+            # we'll also want to update the file on disk here
             await channel.send("Hey...it's Play-Doh...oh no, I mean Plato!")
             await channel.send(file=discord.File("Gifs/Plato.gif"))
     
@@ -120,6 +146,8 @@ async def on_voice_state_update(member, before, after):
         channel = client.get_channel(834913896237236244)
         if time() - graceperiods[770390699131797565] > 7200:
             graceperiods[770390699131797565] = time()
+            # now that we've updated the graceperiods dictionary in memory
+            # we'll also want to update the file on disk here
             await channel.send("Did I hear someone say a conspiracy is in the channel?...no, it's Mr. Conspiracle! Welcome back!!")
             await channel.send(file=discord.File("Gifs/Mr. Conspiracle.gif"))
     
@@ -127,6 +155,8 @@ async def on_voice_state_update(member, before, after):
         channel = client.get_channel(834913896237236244)
         if time() - graceperiods[672142596209901580] > 7200:
             graceperiods[672142596209901580] = time()
+            # now that we've updated the graceperiods dictionary in memory
+            # we'll also want to update the file on disk here
             await channel.send("Well hello! It's Sam!")
             await channel.send(file=discord.File("Gifs/Sam.gif"))
     
@@ -134,6 +164,8 @@ async def on_voice_state_update(member, before, after):
         channel = client.get_channel(834913896237236244)
         if time() - graceperiods[929790100928340048] > 7200:
             graceperiods[929790100928340048] = time()
+            # now that we've updated the graceperiods dictionary in memory
+            # we'll also want to update the file on disk here
             await channel.send(file=discord.File("Everyone grab your Bible! NeilSpirits is in VC."))
             await channel.send(file=discord.File("Gifs/NeilSpirits.gif"))
 
@@ -141,9 +173,12 @@ async def on_voice_state_update(member, before, after):
         channel = client.get_channel(834913896237236244)
         if time() - graceperiods[873204571298742323] > 7200:
             graceperiods[873204571298742323] = time()
+            # now that we've updated the graceperiods dictionary in memory
+            # we'll also want to update the file on disk here
             await channel.send ("Who let the Frog out of its cage? Oh, nevermind, it's Ribbit!")
             await channel.send(file=discord.File("Gifs/Ribbit.gif"))
-            
+
+# we should read the initialization values for graceperiods from file instead of hard-coding them here
 graceperiods = {
     591388257992835093 : 0,
     243879095711170572 : 0,
