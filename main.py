@@ -173,10 +173,10 @@ graceperiods = {
     216674941238640640 : 0
 }
 
-keywords = ["fuck", "Fuck", "shit", "Shit", "asshole", "Asshole", "skank", "Skank", "whore", "Whore", "piss", "Piss"
- "pussy", "Pussy", "cunt", "Cunt", "faggot", "Faggot","tits", "tits", "titties", "Titties", "nigga", "Nigga", "nigger",
- "Nigger", "goddamn", "Goddamn" ,"clit", "Clit", "dick","Dick", "bitch", "Bitch", "Chink", "chink", "cock", ""]
-
+keywords = ["Fuck","fuck","Shit","shit","Asshole","asshole", "Skank", "skank", "Whore", "whore",
+ "Piss", "piss", "Pussy","pussy",  "Cunt", "cunt", "Faggot","faggot", "Tits", "tits", "Titties","titties", "Nigga", "nigga",
+ "Nigger", "nigger", "Goddamn", "goddamn", "Clit", "clit", "Dick", "dick",
+ "Bitch", "bitch", "Chink","chink", "Cock","cock", "Damn", "damn","Dammit","dammit"]
 
 @client.event
 async def on_message(message):
