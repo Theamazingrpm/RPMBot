@@ -186,4 +186,4 @@ async def on_message(message):
                 await message.delete()
                 await message.channel.send("You are not allowed to use this word...REPENT!!.....")
 
-client.run("OTcwMTMwMjA5Njg2ODE4ODg3.GPef58.IWDnJ4C2hn-lBekfN_k1WsocVyITXm5Kk0WMJg")
+client.run("INSERT_TOKEN_HERE")
