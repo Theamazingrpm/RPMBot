@@ -6,6 +6,10 @@ from time import time
 
 client = discord.Client()
 
+keywords = ["Fuck","fuck","Shit","shit","Asshole","asshole", "Skank", "skank", "Whore", "whore",
+ "Piss", "piss", "Pussy","pussy",  "Cunt", "cunt", "Faggot","faggot", "Tits", "tits", "Titties","titties", "Nigga", "nigga",
+ "Nigger", "nigger", "Goddamn", "goddamn", "Clit", "clit", "Dick", "dick",
+ "Bitch", "bitch", "Chink","chink", "Cock","cock", "Damn", "damn","Dammit","dammit"]
 
 @client.event
 async def on_ready():
@@ -17,6 +21,12 @@ async def on_message(message):
 
     if message.content.startswith("$Wazzup"):
         await message.channel.send("Wazzup Brotha in Christ!")
+
+    for i in range(len(keywords)):
+        if keywords[i] in message.content:
+            for j in range(1):
+                await message.delete()
+                await message.channel.send("You are not allowed to use this word...REPENT!!.....")
 
 @client.event
 async def on_voice_state_update(member, before, after):
@@ -177,19 +187,6 @@ graceperiods = {
     216674941238640640 : 0,
     295015576038932480 : 0
 }
-
-keywords = ["Fuck","fuck","Shit","shit","Asshole","asshole", "Skank", "skank", "Whore", "whore",
- "Piss", "piss", "Pussy","pussy",  "Cunt", "cunt", "Faggot","faggot", "Tits", "tits", "Titties","titties", "Nigga", "nigga",
- "Nigger", "nigger", "Goddamn", "goddamn", "Clit", "clit", "Dick", "dick",
- "Bitch", "bitch", "Chink","chink", "Cock","cock", "Damn", "damn","Dammit","dammit"]
-
-@client.event
-async def on_message(message):
-    for i in range(len(keywords)):
-        if keywords[i] in message.content:
-            for j in range(1):
-                await message.delete()
-                await message.channel.send("You are not allowed to use this word...REPENT!!.....")
 
 @client.event
 async def disconnect_member(member, before, after):
