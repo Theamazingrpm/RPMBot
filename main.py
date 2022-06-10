@@ -3,6 +3,8 @@ import os
 import requests
 import json
 from time import time
+from asyncio import sleep
+import datetime
 
 client = discord.Client()
 
@@ -10,13 +12,6 @@ client = discord.Client()
 @client.event
 async def on_ready():
     print("We have logged in as {0.user}. I'm ready!".format(client))
-
-async def on_message(message):
-    if message.author == client.user:
-        return
-
-    if message.content.startswith("$Wazzup"):
-        await message.channel.send("Wazzup Brotha in Christ!")
 
 @client.event
 async def on_voice_state_update(member, before, after):
@@ -156,12 +151,26 @@ async def on_voice_state_update(member, before, after):
             await channel.send("Hank Hill is back! Go ask him about his Propane and Propane accessories!!")
             await channel.send(file=discord.File("Gifs/Hank Hill.gif"))
     
+    elif not before.channel and after.channel and member.id == 807554294021619723:
+        channel = client.get_channel(982466476663509093)
+        if time() - graceperiods[807554294021619723] > 9000:
+            graceperiods[807554294021619723] = time()
+            await channel.send("Crusader is here! Ask him to take off his helmet!")
+            await channel.send(file=discord.File("Gifs/Crusader.gif"))
+
+    elif not before.channel and after.channel and member.id == 637461079458447417:
+        channel = client.get_channel(982466476663509093)
+        if time() - graceperiods[637461079458447417] > 9000:
+            graceperiods[637461079458447417] = time()
+            await channel.send("Renewed & Freed is back in Action!!")
+            await channel.send(file=discord.File("Gifs/RenewedandFreed.gif"))
+
 graceperiods = {
     591388257992835093 : 0,
     243879095711170572 : 0,
     598168727363780609 : 0,
     279776159120621568 : 0,
-    969608624307601438 : 0,
+    702852168717303919 : 0,
     629746673605804043 : 0,
     180950627310895104 : 0,
     669370838478225448 : 0,
@@ -175,13 +184,19 @@ graceperiods = {
     929790100928340048 : 0,
     873204571298742323 : 0,
     216674941238640640 : 0,
-    295015576038932480 : 0
+    295015576038932480 : 0,
+    807554294021619723 : 0,
+    637461079458447417 : 0
 }
 
 keywords = ["Fuck","fuck","Shit","shit","Asshole","asshole", "Skank", "skank", "Whore", "whore",
  "Piss", "piss", "Pussy","pussy",  "Cunt", "cunt", "Faggot","faggot", "Tits", "tits", "Titties","titties", "Nigga", "nigga",
  "Nigger", "nigger", "Goddamn", "goddamn", "Clit", "clit", "Dick", "dick",
  "Bitch", "bitch", "Chink","chink", "Cock","cock", "Damn", "damn","Dammit","dammit"]
+
+time_window_milliseconds = 5000
+max_message_per_window = 4
+author_message_times = {}
 
 @client.event
 async def on_message(message):
@@ -190,14 +205,30 @@ async def on_message(message):
             for j in range(1):
                 await message.delete()
                 await message.channel.send("You are not allowed to use this word...REPENT!!.....")
+    if message.author == client.user:
+        return
+    
+    if message.content == "$Wazzup":
+        await message.channel.send("Wazzup Brotha in Christ!")
 
-@client.event
-async def disconnect_member(member, before, after):
-    role = client.get_role(983128803486367754)
-    channel = client.get_channel(978095031560830976)
-    member = channel.get_member(id)
-    if role == False:
-        if before.channel is None and after.channel is not None:
-            await member.move_to(None)
+    global author_msg_counts
+
+    author_id = message.author.id
+    curr_time = datetime.datetime.now().timestamp() * 1000
+
+    if not author_message_times.get(author_id, False):
+        author_message_times[author_id] = []
+    author_message_times[author_id].append(curr_time)
+    expr_time = curr_time - time_window_milliseconds
+    expired_msgs = [
+        msg_time for msg_time in author_message_times[author_id]
+        if msg_time < expr_time
+    ]
+    for msg_time in expired_msgs:
+        author_message_times[author_id].remove(msg_time)
+        
+    if len(author_message_times[author_id]) > max_message_per_window:
+        await message.channel.send("Stop Spamming the Channel Unneccessarily....and don't make it awkward.")
+
 
 client.run("INSERT_TOKEN_HERE")
