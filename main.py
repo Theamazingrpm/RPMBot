@@ -5,9 +5,8 @@ import json
 from time import time
 from asyncio import sleep
 import datetime
-
+from requests_html import HTMLSession
 client = discord.Client()
-
 
 @client.event
 async def on_ready():
@@ -199,6 +198,32 @@ max_message_per_window = 4
 author_message_times = {}
 
 @client.event
+async def get_news(message):
+    session = HTMLSession()
+    if message.content == ("$news"):
+        url = "https://www.christianitytoday.com/news/our-latest/"
+
+        r = session.get(url)
+
+        r.html.render(sleep = 1, scrolldown = 0)
+
+        articles = r.html.find("article")
+        newslist = []
+        for item in articles:
+            try:
+                newsitem = item.find('<a href="/news/20', first = True)
+                newsarticle = {
+                    "title" : newsitem.text,
+                    "link" : newsitem.absolute_link
+                }
+                newslist.append(newsarticle)
+            except:
+                pass
+        if True:
+            await message.channel.send(get_news)
+    
+    
+@client.event
 async def on_message(message):
     for i in range(len(keywords)):
         if keywords[i] in message.content:
@@ -229,6 +254,8 @@ async def on_message(message):
         
     if len(author_message_times[author_id]) > max_message_per_window:
         await message.channel.send("Stop Spamming the Channel Unneccessarily....and don't make it awkward.")
+
+    
 
 
 client.run("INSERT_TOKEN_HERE")
