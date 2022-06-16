@@ -245,4 +245,4 @@ async def on_message(message):
     if len(authormessagetimes[authorid]) > maxmessageperwindow:
         await message.channel.send("Stop Spamming the Channel Unneccessarily....and don't make it awkward.")
 
-client.run("OTcwMTMwMjA5Njg2ODE4ODg3.GzB2h5.eAT3L2-j4rfWfSsEIuErmxGINJsZxaKxXqcVOw")
+client.run("PLACE_TOKEN_HERE")
