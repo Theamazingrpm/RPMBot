@@ -5,12 +5,22 @@ import json
 from time import time
 from asyncio import sleep
 import datetime
-from requests_html import HTMLSession
+import asyncio
+from requests_html import AsyncHTMLSession
+
 client = discord.Client()
 
 @client.event
 async def on_ready():
     print("We have logged in as {0.user}. I'm ready!".format(client))
+
+@client.event
+async def send_delay_message(message):
+    wait_time = 0
+    await asyncio.sleep(wait_time)
+    channel = client.get_channel(834982659158704249)
+    await channel.send("Bump it up! <@&834937326697185323> <@&834929362323243048> <@&845897518998880266>")
+    await channel.send(file=discord.File("Gifs/Fist_bump.gif"))
 
 @client.event
 async def on_voice_state_update(member, before, after):
@@ -70,7 +80,7 @@ async def on_voice_state_update(member, before, after):
         channel = client.get_channel(982466476663509093)
         if time() - graceperiods[669370838478225448] > 9000:
             graceperiods[669370838478225448] = time()
-            await channel.send("@Thegiggler is in VC! Everyone get ready for the trolling to happen!!")
+            await channel.send("@Thegigler is in VC! Everyone get ready for the trolling to happen!!")
             await channel.send(file=discord.File("Gifs/Thegiggler.gif"))
 
     elif not before.channel and after.channel and member.id == 684462242082717787:
@@ -135,13 +145,6 @@ async def on_voice_state_update(member, before, after):
             graceperiods[873204571298742323] = time()
             await channel.send("Who let the Frog out of its cage? Oh, nevermind, it's Ribbit!")
             await channel.send(file=discord.File("Gifs/Ribbit.gif"))
-    
-    elif not before.channel and after.channel and member.id == 216674941238640640:
-        channel = client.get_channel(982466476663509093)
-        if time() - graceperiods[216674941238640640] > 9000:
-            graceperiods[216674941238640640] = time()
-            await channel.send("Lo and Behold, Mr. Kit is here...Everyone gather around!")
-            await channel.send(file=discord.File("Gifs/Mr. Kit.gif"))
 
     elif not before.channel and after.channel and member.id == 295015576038932480:
         channel = client.get_channel(982466476663509093)
@@ -164,6 +167,13 @@ async def on_voice_state_update(member, before, after):
             await channel.send("Renewed & Freed is back in Action!!")
             await channel.send(file=discord.File("Gifs/RenewedandFreed.gif"))
 
+    elif not before.channel and after.channel and member.id == 275857170845925376:
+        channel = client.get_channel(982466476663509093)
+        if time() - graceperiods[275857170845925376] > 9000:
+            graceperiods[275857170845925376] = time()
+            await channel.send("CJAX is now in VC... And looks cooler than ever!!")
+            await channel.send(file=discord.File("Gifs/CJAX.gif"))
+
 graceperiods = {
     591388257992835093 : 0,
     243879095711170572 : 0,
@@ -185,7 +195,8 @@ graceperiods = {
     216674941238640640 : 0,
     295015576038932480 : 0,
     807554294021619723 : 0,
-    637461079458447417 : 0
+    637461079458447417 : 0,
+    275857170845925376 : 0
 }
 
 keywords = ["Fuck","fuck","Shit","shit","Asshole","asshole", "Skank", "skank", "Whore", "whore",
@@ -193,36 +204,10 @@ keywords = ["Fuck","fuck","Shit","shit","Asshole","asshole", "Skank", "skank", "
  "Nigger", "nigger", "Goddamn", "goddamn", "Clit", "clit", "Dick", "dick",
  "Bitch", "bitch", "Chink","chink", "Cock","cock", "Damn", "damn","Dammit","dammit"]
 
-time_window_milliseconds = 5000
-max_message_per_window = 4
-author_message_times = {}
+timewindowmilliseconds = 5000
+maxmessageperwindow = 4
+authormessagetimes = {}
 
-@client.event
-async def get_news(message):
-    session = HTMLSession()
-    if message.content == ("$news"):
-        url = "https://www.christianitytoday.com/news/our-latest/"
-
-        r = session.get(url)
-
-        r.html.render(sleep = 1, scrolldown = 0)
-
-        articles = r.html.find("article")
-        newslist = []
-        for item in articles:
-            try:
-                newsitem = item.find('<a href="/news/20', first = True)
-                newsarticle = {
-                    "title" : newsitem.text,
-                    "link" : newsitem.absolute_link
-                }
-                newslist.append(newsarticle)
-            except:
-                pass
-        if True:
-            await message.channel.send(get_news)
-    
-    
 @client.event
 async def on_message(message):
     for i in range(len(keywords)):
@@ -236,26 +221,28 @@ async def on_message(message):
     if message.content == "$Wazzup":
         await message.channel.send("Wazzup Brotha in Christ!")
 
-    global author_msg_counts
+    if message.content == "$Bump-Reminder":
+        await message.channel.send("Bump it up! <@&834937326697185323> <@&834929362323243048> <@&845897518998880266>")
+        await message.channel.send(file=discord.File("Gifs/Fist_bump.gif"))
 
-    author_id = message.author.id
+    global authormsgcounts
+
+    authorid = message.author.id
     curr_time = datetime.datetime.now().timestamp() * 1000
 
-    if not author_message_times.get(author_id, False):
-        author_message_times[author_id] = []
-    author_message_times[author_id].append(curr_time)
-    expr_time = curr_time - time_window_milliseconds
-    expired_msgs = [
-        msg_time for msg_time in author_message_times[author_id]
-        if msg_time < expr_time
+    if not authormessagetimes.get(authorid, False):
+        authormessagetimes[authorid] = []
+    authormessagetimes[authorid].append(curr_time)
+    exprtime = curr_time - timewindowmilliseconds
+    expiredmessages = [
+        msg_time for msg_time in authormessagetimes[authorid]
+        if msg_time < exprtime
     ]
-    for msg_time in expired_msgs:
-        author_message_times[author_id].remove(msg_time)
+
+    for msg_time in expiredmessages:
+        authormessagetimes[authorid].remove(msg_time)
         
-    if len(author_message_times[author_id]) > max_message_per_window:
+    if len(authormessagetimes[authorid]) > maxmessageperwindow:
         await message.channel.send("Stop Spamming the Channel Unneccessarily....and don't make it awkward.")
 
-    
-
-
-client.run("INSERT_TOKEN_HERE")
+client.run("OTcwMTMwMjA5Njg2ODE4ODg3.GzB2h5.eAT3L2-j4rfWfSsEIuErmxGINJsZxaKxXqcVOw")
